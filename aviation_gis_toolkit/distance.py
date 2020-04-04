@@ -6,22 +6,22 @@ from aviation_gis_toolkit.const import *
 
 
 class Distance:
-    """ Class covers actions related to distance: validation, conversion among various units of measure (UOM)
+    """ Class covers actions related to distance: validation, conversion among various units of measure (UOM).
     Attributes:
     -----------
     src_dist : str or float or int
         Keeps source value of distance, note that this value can be with comma decimal separator not dot decimal
-        separator, example: 109,25 109.25
+        separator, example: 109,25 109.25.
     src_uom : str
-        Keeps source unit of measure of distance, e.g. UOM_M, UOM_KM
+        Keeps source unit of measure of distance, e.g. UOM_M, UOM_KM.
     src_fdist: float
-        Keeps source distance as float in source unit of measure, only if src_dist is valid
+        Keeps source distance as float in source unit of measure, only if src_dist is valid.
     is_valid: bool
         Keeps information if distance is valid or not.
         Distance if considered as valid if src_dist can be converted into float number
-        and src_uom is valid unit of measure
+        and src_uom is valid unit of measure.
     err_msg: str
-        Keeps error message why distance is not valid, for example is unit of measure is not valid
+        Keeps error message why distance is not valid, for example is unit of measure is not valid.
     """
 
     def __init__(self, src_dist, src_uom=UOM_M):
@@ -74,7 +74,7 @@ class Distance:
     def is_uom(uom):
         """ Checks if input parameter can be converted to number and returns input as number in such case.
         :param: uom: str, const that determine unit of measure
-        :return: bool: True if uom parameter is within supported uoms, False otherwise
+        :return: bool: True if uom parameter is within supported UOMs, False otherwise
                 err_msg: str, error message if uom is not valid
         """
         err_msg = ''
@@ -92,7 +92,7 @@ class Distance:
         return True, err_msg
 
     def check_distance(self):
-        """ Checks if source distance and value are valid (a number) """
+        """ Checks if source distance and value are valid (a number). """
         is_number, err_number, src_fdist = self.is_dist_number(self.src_dist)
         is_uom, err_uom = self.is_uom(self.src_uom)
         if is_number and is_uom:
@@ -103,7 +103,7 @@ class Distance:
             self.err_msg = err_number + err_uom
 
     def convert_dist_to_m(self):
-        """ Converts source distance value from source UOM to meters """
+        """ Converts source distance value from source UOM to meters. """
         if self.is_valid:
             # Convert to meters
             if self.src_uom == UOM_M:
@@ -119,7 +119,7 @@ class Distance:
 
     @staticmethod
     def convert_m_to_given_uom(dist_m, to_uom):
-        """ Converts distance from meters to given UOM """
+        """ Converts distance from meters to given UOM. """
         if to_uom in UOM_LIST:
             if to_uom == UOM_M:
                 return dist_m
@@ -133,7 +133,7 @@ class Distance:
                 return dist_m / 1609.344
 
     def convert_dist_to_uom(self, to_uom):
-        """ Convert distance between various units """
+        """ Convert distance between various units. """
         if self.is_valid:
             if to_uom in UOM_LIST:
                 if self.src_uom == to_uom:
