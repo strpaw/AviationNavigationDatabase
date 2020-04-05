@@ -26,3 +26,7 @@ AF_HDMS_COMP = 'AF_HDMS_COMP'  # e.g.: N552243.47
 # Degrees, minutes - compacted formats:
 AF_DMH_COMP = 'AF_DMH_COMP'  # e.g.: 5522.47N
 AF_HDM_COMP = 'AF_HDM_COMP'  # e.g.: N5522.47
+
+# Degrees, hemisphere - compacted formats:
+AF_DH_COMP = 'AF_DH_COMP'  # e.g.: 55.47N
+AF_HD_COMP = 'AF_HD_COMP'  # e.g.: N55.47

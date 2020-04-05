@@ -379,3 +379,138 @@ class CoordinatePredeterminedDMFormatsTest(unittest.TestCase):
 
         ang = CoordinatePredetermined(AF_HDM_COMP, AT_LAT)
         self.assertEqual(-35.5, ang.dm_to_dd('S3530.000'))
+
+
+class CoordinatePredeterminedDHFormatsTest(unittest.TestCase):
+
+    def test_is_given_format(self):
+        # DH longitude
+        regex = ANGLE_PATTERNS[AF_DH_COMP][AT_LON]
+
+        dh_lon_valid = ['180E',
+                        '180.0000W',
+                        '179E',
+                        '179.5999W',
+                        '170.999W',
+                        '099.99W',
+                        '099E',
+                        '009W',
+                        '009.0000E',
+                        '009.99W',
+                        '000.99E',
+                        '000W',
+                        '000.000E',
+                        '000.001W',
+                        '000.099W']
+        # self.assertEqual(True, CoordinatePredetermined.is_given_format(ang, regex))
+        for ang in dh_lon_valid:
+            self.assertEqual(True, CoordinatePredetermined.is_given_format(ang, regex))
+
+        # HD longitude
+        regex = ANGLE_PATTERNS[AF_HD_COMP][AT_LON]
+
+        hd_lon_valid = ['E180',
+                        'W180.0000',
+                        'E179',
+                        'W179.999',
+                        'W170.999',
+                        'W099.99',
+                        'E099',
+                        'W009',
+                        'E009.0000',
+                        'W009.99',
+                        'E000.99',
+                        'W000']
+
+        for ang in hd_lon_valid:
+            self.assertEqual(True, CoordinatePredetermined.is_given_format(ang, regex))
+
+        # DH latitude
+        regex = ANGLE_PATTERNS[AF_DH_COMP][AT_LAT]
+
+        dh_lat_valid = ['90N',
+                        '90.0000S',
+                        '89N',
+                        '89.999S',
+                        '80.999S',
+                        '09N',
+                        '09S',
+                        '09.0000N',
+                        '09.99S',
+                        '00.99S',
+                        '00S',
+                        '00.000N',
+                        '00.001S']
+
+        for ang in dh_lat_valid:
+            self.assertEqual(True, CoordinatePredetermined.is_given_format(ang, regex))
+
+        # HD latitude
+        regex = ANGLE_PATTERNS[AF_HD_COMP][AT_LAT]
+
+        hd_lat_valid = ['N90',
+                        'S90.0000',
+                        'N89',
+                        'S89.999',
+                        'S80.999',
+                        'N09',
+                        'S09',
+                        'N09.0000',
+                        'S09.99',
+                        'N00.99',
+                        'S00',
+                        'N00.000',
+                        'S00.001']
+
+        for ang in hd_lat_valid:
+            self.assertEqual(True, CoordinatePredetermined.is_given_format(ang, regex))
+
+    def test_get_dh_coordinate_parts(self):
+
+        # DH Longitude
+        ang = '023.211W'
+        regex = ANGLE_PATTERNS[AF_DH_COMP][AT_LON]
+        self.assertEqual((23.211, 'W'),
+                         CoordinatePredetermined.get_dh_coordinate_parts(ang, regex))
+
+        # DH Latitude
+        ang = '23.56S'
+        regex = ANGLE_PATTERNS[AF_DH_COMP][AT_LAT]
+        self.assertEqual((23.56, 'S'),
+                         CoordinatePredetermined.get_dh_coordinate_parts(ang, regex))
+
+        # HD Longitude
+        ang = 'E002.456'
+        regex = ANGLE_PATTERNS[AF_HD_COMP][AT_LON]
+        self.assertEqual((2.456, 'E'),
+                         CoordinatePredetermined.get_dh_coordinate_parts(ang, regex))
+
+        # HD Latitude
+        ang = 'N03.56011'
+        regex = ANGLE_PATTERNS[AF_HD_COMP][AT_LAT]
+        self.assertEqual((3.56011, 'N'),
+                         CoordinatePredetermined.get_dh_coordinate_parts(ang, regex))
+
+    def test_dh_parts_to_dd(self):
+        dh_parts = (130, 'W')
+        self.assertEqual(-130, CoordinatePredetermined.dh_parts_to_dd(dh_parts))
+
+        dh_parts = (47, 'N')
+        self.assertEqual(47, CoordinatePredetermined.dh_parts_to_dd(dh_parts))
+
+    def test_dh_to_dd(self):
+
+        ang = CoordinatePredetermined(AF_DH_COMP, AT_LON)
+        self.assertEqual(-135.5, ang.dh_to_dd('135.500W'))
+
+        ang = CoordinatePredetermined(AF_DH_COMP, AT_LON)
+        self.assertEqual(-180, ang.dh_to_dd('180.00W'))
+
+        ang = CoordinatePredetermined(AF_DH_COMP, AT_LON)
+        self.assertEqual(None, ang.dh_to_dd('181E'))
+
+        ang = CoordinatePredetermined(AF_DH_COMP, AT_LAT)
+        self.assertEqual(-35.3, ang.dh_to_dd('35.300S'))
+
+        ang = CoordinatePredetermined(AF_HD_COMP, AT_LAT)
+        self.assertEqual(-35.999, ang.dh_to_dd('S35.99900'))
