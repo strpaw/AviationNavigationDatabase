@@ -22,3 +22,7 @@ AT_LAT = 'AT_LAT'
 # Degrees, minutes, seconds, hemisphere - compacted formats:
 AF_DMSH_COMP = 'AF_DMSH_COMP'  # e.g.: 552243.47N
 AF_HDMS_COMP = 'AF_HDMS_COMP'  # e.g.: N552243.47
+
+# Degrees, minutes - compacted formats:
+AF_DMH_COMP = 'AF_DMH_COMP'  # e.g.: 5522.47N
+AF_HDM_COMP = 'AF_HDM_COMP'  # e.g.: N5522.47

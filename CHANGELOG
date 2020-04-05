@@ -1,3 +1,6 @@
+0.2.1
+    - DMH, HDM coordinates (longitude, latitude) compacted formats validation, conversion to
+      DD format
 0.2
     - DMSH, HDMS coordinates (longitude, latitude) compacted formats validation, conversion to
       DD format
