@@ -1,3 +1,7 @@
+0.3
+    - significant waypoint parser from txt file in format: <waypoint_ident> <latitude> <longitude>
+    into PostGIS database
+    - DDL for sig_waypoint
 0.2.2
     - DH, HD coordinates (longitude, latitude) compacted formats validation, conversion to
       DD format
