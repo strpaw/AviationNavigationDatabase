@@ -1,16 +1,26 @@
+0.4
+    - angle (DMSH, HDMS compacted, space separated) format validation and conversion - format not
+    known in advance
+    - conversion angle from DD to DMS in various formats (HDMS, DMSH compacted, space separated, degree, minute, seconds
+    symbol separated
+
 0.3
     - significant waypoint parser from txt file in format: <waypoint_ident> <latitude> <longitude>
     into PostGIS database
     - DDL for sig_waypoint
+
 0.2.2
     - DH, HD coordinates (longitude, latitude) compacted formats validation, conversion to
       DD format
+
 0.2.1
     - DMH, HDM coordinates (longitude, latitude) compacted formats validation, conversion to
       DD format
+
 0.2
     - DMSH, HDMS coordinates (longitude, latitude) compacted formats validation, conversion to
       DD format
+
 0.1
     - first release
     - Distance validation, conversion among meters, kilometers, statue miles, nautical miles, feet
