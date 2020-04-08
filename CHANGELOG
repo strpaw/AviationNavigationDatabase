@@ -1,3 +1,7 @@
+0.5
+    - Vincenty Direct Solution (calculates end point from initial point and initial azimuth from initial point
+    to end point)
+    
 0.4
     - angle (DMSH, HDMS compacted, space separated) format validation and conversion - format not
     known in advance
