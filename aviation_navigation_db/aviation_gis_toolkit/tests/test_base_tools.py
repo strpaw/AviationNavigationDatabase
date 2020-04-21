@@ -1,5 +1,5 @@
 import unittest
-from aviation_gis_toolkit.base_tools import BasicTools
+from ..base_tools import *
 
 
 class BasicToolsTests(unittest.TestCase):

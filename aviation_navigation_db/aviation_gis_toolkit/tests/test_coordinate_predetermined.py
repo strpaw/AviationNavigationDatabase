@@ -1,6 +1,5 @@
 import unittest
-from aviation_gis_toolkit.coordinate_predetermined import *
-from aviation_gis_toolkit.const import *
+from ..coordinate_predetermined import *
 
 
 class CoordinatePredeterminedTests(unittest.TestCase):

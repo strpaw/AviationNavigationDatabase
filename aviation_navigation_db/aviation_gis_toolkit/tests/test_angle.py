@@ -1,5 +1,6 @@
 import unittest
-from aviation_gis_toolkit.angle import *
+from ..angle import Angle
+from ..const import *
 
 
 class AngleTests(unittest.TestCase):
@@ -283,3 +284,7 @@ class AngleTests(unittest.TestCase):
 
         for test_item in lat_test_data:
             self.assertEqual(test_item[0], Angle.angle_no_hemisphere_to_dd(test_item[1], AT_LON))
+
+
+if __name__ == '__main__':
+    unittest.main()

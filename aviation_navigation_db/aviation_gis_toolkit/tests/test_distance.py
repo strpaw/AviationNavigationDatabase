@@ -1,6 +1,6 @@
 import unittest
-from aviation_gis_toolkit.distance import Distance
-from aviation_gis_toolkit.const import *
+from ..const import *
+from ..distance import Distance
 
 
 class DistanceTests(unittest.TestCase):

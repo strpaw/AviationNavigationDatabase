@@ -1,7 +1,7 @@
 """
 etod_mapping_csv.py provides rules for mapping data from eTOD stored in CSV file
 """
-from aviation_gis_toolkit.const import *
+from aviation_navigation_db.aviation_gis_toolkit.const import *
 
 etod_map = {
         'Finland': {

@@ -4,8 +4,8 @@ coordinate_predetermined module provides functionality to validate and convert c
 from known format in advance, such as degrees, minutes, seconds, hemisphere (DMSH) into decimal degrees (DD)
 format.
 """
-from aviation_gis_toolkit.const import *
 import re
+from .const import *
 
 # --------------- Regular expressions for coordinate formats  --------------- #
 

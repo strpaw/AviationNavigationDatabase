@@ -3,11 +3,10 @@ etod_parser.py module
 This module provides extracting data from eTOD csv files text files
 """
 
-from aviation_gis_toolkit.eaip_data_extraction.etod_mapping import *
-from aviation_gis_toolkit.db_tools.db_tools import DatabaseTools
-from aviation_gis_toolkit.coordinate_predetermined import *
-from aviation_gis_toolkit.angle import *
 import csv
+from aviation_navigation_db.nav_db_tools.db_tools.db_tools import DatabaseTools
+from aviation_navigation_db.nav_db_tools.eaip_data_extraction.etod_mapping import *
+from aviation_navigation_db.aviation_gis_toolkit.coordinate_predetermined import *
 
 
 class EtodParser:
