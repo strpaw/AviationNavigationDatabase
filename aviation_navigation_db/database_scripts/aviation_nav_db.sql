@@ -83,3 +83,31 @@ CREATE TRIGGER etod_mod
     ON etod
     FOR EACH ROW
     EXECUTE PROCEDURE etod_update_mod_data();
+
+
+DROP TABLE IF EXISTS aviation_abbreviation;
+CREATE TABLE aviation_abbreviation (
+	abbr_id serial PRIMARY KEY,
+	ctry_iso3 char(3) NOT NULL,
+	abbreviation varchar(10) NOT NULL,
+	abbreviation_decode varchar(200) NOT NULL,
+	CONSTRAINT abbr_ctry_fk FOREIGN KEY (ctry_iso3) REFERENCES country (ctry_iso3)
+);
+
+
+DROP TABLE IF EXISTS airport;
+CREATE TABLE airport (
+	airp_id serial PRIMARY KEY,
+	ctry_iso3 char(3) NOT NULL,
+	iata_code char(3) NULL,
+	icao_code char(4) NOT NULL UNIQUE,
+	arp_src_lon varchar(20) NOT NULL,
+	arp_src_lat varchar(20) NOT NULL,
+	arp_elev float,
+	full_name varchar(150),
+	offical_website varchar(200),
+	airp_location geography(POINT, 4326) NOT NULL,
+	ins_user varchar(30) NOT NULL DEFAULT current_user ,
+    ins_tmsp timestamp NOT NULL DEFAULT now(),
+	CONSTRAINT airp_ctry_fk FOREIGN KEY (ctry_iso3) REFERENCES country (ctry_iso3)
+);
