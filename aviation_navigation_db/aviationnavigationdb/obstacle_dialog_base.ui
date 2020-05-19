@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>646</width>
+    <height>391</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>240</y>
+     <x>296</x>
+     <y>361</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -28,6 +28,134 @@
    <property name="standardButtons">
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxObstInsertMethod">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>20</y>
+     <width>623</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Import obstacles from eTOD file</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Insert obstacle: coordinates</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QStackedWidget" name="stackedWidgetObstInsertMethod">
+   <property name="geometry">
+    <rect>
+     <x>7</x>
+     <y>47</y>
+     <width>627</width>
+     <height>306</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="page">
+    <widget class="QLineEdit" name="lineEditeTODFile">
+     <property name="geometry">
+      <rect>
+       <x>62</x>
+       <y>41</y>
+       <width>533</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labeleTODFile">
+     <property name="geometry">
+      <rect>
+       <x>14</x>
+       <y>48</y>
+       <width>35</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>eTOD file:</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonSelecteTODFile">
+     <property name="geometry">
+      <rect>
+       <x>599</x>
+       <y>44</y>
+       <width>21</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBoxeTODCountry">
+     <property name="geometry">
+      <rect>
+       <x>61</x>
+       <y>12</y>
+       <width>533</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Finland</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Poland</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Romania</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>USA</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="labeleTODCountry">
+     <property name="geometry">
+      <rect>
+       <x>13</x>
+       <y>18</y>
+       <width>35</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Country:</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonImporteTOD">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>272</y>
+       <width>56</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Import</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_2"/>
   </widget>
  </widget>
  <resources/>

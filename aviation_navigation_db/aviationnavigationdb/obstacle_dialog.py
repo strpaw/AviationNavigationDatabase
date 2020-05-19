@@ -25,13 +25,14 @@
 import os
 
 from PyQt5 import uic
-from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QWidget, QMessageBox, QDialog, QFileDialog
+
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'obstacle_dialog_base.ui'))
 
 
-class ObstacleDialog(QtWidgets.QDialog, FORM_CLASS):
+class ObstacleDialog(QDialog, FORM_CLASS):
     def __init__(self, parent=None):
         """Constructor."""
         super(ObstacleDialog, self).__init__(parent)
@@ -41,3 +42,25 @@ class ObstacleDialog(QtWidgets.QDialog, FORM_CLASS):
         # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
+
+        self.comboBoxObstInsertMethod.currentIndexChanged.connect(self.change_obstacle_insert_method)
+        self.pushButtonSelecteTODFile.clicked.connect(self.select_etod_file)
+        self.pushButtonImporteTOD.clicked.connect(self.import_etod)
+
+    def change_obstacle_insert_method(self):
+        self.stackedWidgetObstInsertMethod.setCurrentIndex(self.comboBoxObstInsertMethod.currentIndex())
+
+    def select_etod_file(self):
+        etod_file = QFileDialog.getOpenFileName(self, "Select eTOD file", "", '(*.csv *.dat)')[0]
+        if etod_file:
+            self.lineEditeTODFile.setText(etod_file)
+
+    def import_etod(self):
+        etod_file = self.lineEditeTODFile.text().strip()
+        if etod_file:
+            if os.path.isfile(etod_file):
+                pass  # TODO: Implement importing eTOD file into database
+            else:
+                QMessageBox.critical(QWidget(), "Message", '{} is not a file!'.format(etod_file))
+        else:
+            QMessageBox.critical(QWidget(), "Message", 'Select eTOD data file!')
