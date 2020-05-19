@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/aviation_nav_db" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
