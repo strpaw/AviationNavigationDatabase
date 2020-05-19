@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AviationNavigationDB</class>
- <widget class="QDialog" name="AviationNavigationDB">
+ <class>ObstacleDialog</class>
+ <widget class="QDialog" name="ObstacleDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>AviationNavigationDB</string>
+   <string>Obstacle</string>
   </property>
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
@@ -35,7 +35,7 @@
   <connection>
    <sender>button_box</sender>
    <signal>accepted()</signal>
-   <receiver>AviationNavigationDB</receiver>
+   <receiver>ObstacleDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -51,7 +51,7 @@
   <connection>
    <sender>button_box</sender>
    <signal>rejected()</signal>
-   <receiver>AviationNavigationDB</receiver>
+   <receiver>ObstacleDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

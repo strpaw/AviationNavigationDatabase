@@ -28,7 +28,7 @@ from PyQt5.QtWidgets import QAction
 # Initialize Qt resources from file resources.py
 from .resources import *
 # Import the code for the dialog
-from .aviation_nav_db_dialog import AviationNavigationDBDialog
+from .obstacle_dialog import ObstacleDialog
 import os.path
 
 
@@ -62,7 +62,7 @@ class AviationNavigationDB:
                 QCoreApplication.installTranslator(self.translator)
 
         # Create the dialog (after translation) and keep reference
-        self.dlg = AviationNavigationDBDialog()
+        self.obstacle_dlg = ObstacleDialog()
 
         # Declare instance attributes
         self.actions = []
@@ -84,7 +84,7 @@ class AviationNavigationDB:
         :rtype: QString
         """
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
-        return QCoreApplication.translate('AviationNavigationDB', message)
+        return QCoreApplication.translate('', message)
 
 
     def add_action(
@@ -163,11 +163,10 @@ class AviationNavigationDB:
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ':/plugins/aviation_nav_db/icon.png'
         self.add_action(
-            icon_path,
-            text=self.tr(u'AviationNavigationDB'),
-            callback=self.run,
+            icon_path='',
+            text=self.tr(u'Obstacle'),
+            callback=self.open_obstacle_dlg,
             parent=self.iface.mainWindow())
 
 
@@ -181,15 +180,5 @@ class AviationNavigationDB:
         # remove the toolbar
         del self.toolbar
 
-
-    def run(self):
-        """Run method that performs all the real work"""
-        # show the dialog
-        self.dlg.show()
-        # Run the dialog event loop
-        result = self.dlg.exec_()
-        # See if OK was pressed
-        if result:
-            # Do something useful here - delete the line containing pass and
-            # substitute with your code.
-            pass
+    def open_obstacle_dlg(self):
+        self.obstacle_dlg.show()
