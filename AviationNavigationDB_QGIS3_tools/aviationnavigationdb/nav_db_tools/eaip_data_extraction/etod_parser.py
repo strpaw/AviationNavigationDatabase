@@ -4,9 +4,9 @@ This module provides extracting data from eTOD csv files text files
 """
 
 import csv
-from aviation_navigation_db.nav_db_tools.db_tools.db_tools import DatabaseTools
-from aviation_navigation_db.nav_db_tools.eaip_data_extraction.etod_mapping import *
-from aviation_navigation_db.aviation_gis_toolkit.coordinate_predetermined import *
+from aviation_navigation_db_tools.nav_db_tools.db_tools.db_tools import DatabaseTools
+from aviation_navigation_db_tools.nav_db_tools.eaip_data_extraction.etod_mapping import *
+from aviation_navigation_db_tools.aviation_gis_toolkit.coordinate_predetermined import *
 
 
 class EtodParser:

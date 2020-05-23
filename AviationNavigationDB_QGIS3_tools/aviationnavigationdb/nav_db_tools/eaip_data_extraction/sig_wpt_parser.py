@@ -12,9 +12,9 @@ sgp.set_coordinates(AF_DMSH)  # Set coordinates formats in which waypoints are s
 sgp.sig_point_txt_file_into_database(data_file, host, database, user, password)
 """
 import os.path
-from aviation_navigation_db.aviation_gis_toolkit.const import *
-from aviation_navigation_db.aviation_gis_toolkit.coordinate_predetermined import CoordinatePredetermined
-from aviation_navigation_db.nav_db_tools.db_tools.db_tools import DatabaseTools
+from aviation_navigation_db_tools.aviation_gis_toolkit.const import *
+from aviation_navigation_db_tools.aviation_gis_toolkit.coordinate_predetermined import CoordinatePredetermined
+from aviation_navigation_db_tools.nav_db_tools.db_tools.db_tools import DatabaseTools
 
 
 class SignificantWaypointParser:
