@@ -28,6 +28,7 @@ from PyQt5.QtWidgets import QAction
 # Initialize Qt resources from file resources.py
 from .resources import *
 # Import the code for the dialog
+from .abbreviation_dialog import AbbreviationDialog
 from .obstacle_dialog import ObstacleDialog
 import os.path
 
@@ -62,7 +63,9 @@ class AviationNavigationDB:
                 QCoreApplication.installTranslator(self.translator)
 
         # Create the dialog (after translation) and keep reference
+        self.abbreviation_dlg = AbbreviationDialog()
         self.obstacle_dlg = ObstacleDialog()
+
 
         # Declare instance attributes
         self.actions = []
@@ -169,6 +172,11 @@ class AviationNavigationDB:
             callback=self.open_obstacle_dlg,
             parent=self.iface.mainWindow())
 
+        self.add_action(
+            icon_path='',
+            text=self.tr(u'Abbreviation'),
+            callback=self.open_abbreviation_dlg,
+            parent=self.iface.mainWindow())
 
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
@@ -182,3 +190,6 @@ class AviationNavigationDB:
 
     def open_obstacle_dlg(self):
         self.obstacle_dlg.show()
+
+    def open_abbreviation_dlg(self):
+        self.abbreviation_dlg.show()
