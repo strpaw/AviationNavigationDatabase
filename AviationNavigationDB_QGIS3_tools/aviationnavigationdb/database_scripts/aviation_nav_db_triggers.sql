@@ -26,3 +26,9 @@ CREATE TRIGGER obstacle_mod
     ON obstacle
     FOR EACH ROW
     EXECUTE PROCEDURE insert_mod_timestamp_user();
+
+CREATE TRIGGER taxiway_mod
+    BEFORE UPDATE
+    ON taxiway
+    FOR EACH ROW
+    EXECUTE PROCEDURE insert_mod_timestamp_user();

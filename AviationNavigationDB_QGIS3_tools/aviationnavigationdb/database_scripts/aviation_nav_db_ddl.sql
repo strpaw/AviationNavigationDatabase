@@ -137,6 +137,7 @@ CREATE TABLE airport (
     fire_fighting_category VARCHAR(5) NULL,
     landing_facility_type VARCHAR(20) NOT NULL,
     city VARCHAR(50) NULL,
+    short_name VARCHAR(50) NULL,
     user_add CHAR(8) DEFAULT current_user,
     timestamp_add TIMESTAMP DEFAULT now(),
     user_mod CHAR(8) NULL,

@@ -12,26 +12,23 @@ An example follows:
 from qgis.PyQt.QtWidgets import QWidget
 import webbrowser
 ais_www = None
-leAISWWW = None
-btnOpenWWW = None
 
 
 def open_ais_www():
-	""" Open AIS webpage in default browser """
+	""" Open AIS webpage in default web browser. """
+	global ais_www
 	if ais_www and ais_www != 'NULL':
 		webbrowser.open(ais_www)
 
 
-def my_form_open(dialog, layer, feature):
+def check_country_attributes(dialog, layer, feature):
 	global ais_www
-	global leAISWWW
-	global btnOpenWWW
-	leAISWWW = dialog.findChild(QWidget, "ais_www")
-	btnOpenWWW = dialog.findChild(QWidget, "pushButtonOpenWWW")
-	btnOpenWWW.clicked.connect(open_ais_www)
+	le_ais_www = dialog.findChild(QWidget, "ais_www")
+	btn_open_www = dialog.findChild(QWidget, "pushButtonOpenWWW")
+	btn_open_www.clicked.connect(open_ais_www)
 
-	ais_www = leAISWWW.text()
+	ais_www = le_ais_www.text()
 	if ais_www and ais_www != 'NULL':
-		btnOpenWWW.setEnabled(True)
+		btn_open_www.setEnabled(True)
 	else:
-		btnOpenWWW.setEnabled(False)
+		btn_open_www.setEnabled(False)
