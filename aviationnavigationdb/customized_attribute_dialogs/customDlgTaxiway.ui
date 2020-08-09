@@ -145,8 +145,17 @@
      <height>101</height>
     </rect>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <property name="title">
     <string>Airport</string>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
    </property>
    <widget class="QLineEdit" name="icao">
     <property name="geometry">
@@ -372,6 +381,9 @@
       <width>391</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPlainTextEdit" name="remarks">

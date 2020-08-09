@@ -24,12 +24,12 @@
 from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QAction
+from qgis.core import *
 
 # Initialize Qt resources from file resources.py
-from .resources import *
 # Import the code for the dialog
 from .abbreviation_dialog import AbbreviationDialog
-from .obstacle_dialog import ObstacleDialog
+from aviationnavigationdb.obstacle_dialog import ObstacleDialog
 import os.path
 
 
@@ -64,7 +64,7 @@ class AviationNavigationDB:
 
         # Create the dialog (after translation) and keep reference
         self.abbreviation_dlg = AbbreviationDialog()
-        self.obstacle_dlg = ObstacleDialog()
+        self.obstacle_dlg = ObstacleDialog(self.iface)
 
 
         # Declare instance attributes

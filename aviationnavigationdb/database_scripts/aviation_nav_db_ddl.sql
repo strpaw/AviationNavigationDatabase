@@ -29,7 +29,7 @@ CREATE TABLE obstacle_type (
 CREATE TABLE obstacle (
     obst_id SERIAL PRIMARY KEY,
     ctry_id INT NOT NULL,
-    obst_identifier VARCHAR(35),
+    obst_identifier VARCHAR(50),
     obst_name VARCHAR(100) NULL,
     lon_src VARCHAR(30) NOT NULL,
     lat_src VARCHAR(30) NOT NULL,
