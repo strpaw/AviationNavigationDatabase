@@ -55,6 +55,7 @@ class ObstacleDialog(QDialog, FORM_CLASS):
         self.comboBoxObstInsertMethod.currentIndexChanged.connect(self.change_obstacle_insert_method)
         self.pushButtonSelecteTODFile.clicked.connect(self.select_etod_file)
         self.pushButtonImporteTOD.clicked.connect(self.import_etod)
+        self.pushButtonInsertSingleObstacle.clicked.connect(self.insert_single_obstacle)
 
     def change_obstacle_insert_method(self):
         self.stackedWidgetObstInsertMethod.setCurrentIndex(self.comboBoxObstInsertMethod.currentIndex())
@@ -198,3 +199,38 @@ class ObstacleDialog(QDialog, FORM_CLASS):
                 QMessageBox.critical(QWidget(), "Message", '{} is not a file!'.format(etod_file))
         else:
             QMessageBox.critical(QWidget(), "Message", 'Select eTOD data file!')
+
+    # Fetching obstacle data from dialog for inserting methods where single obstacle is inserted:
+    # Longitude, latitude; azimuth and distance, azimuth distance offset, cartesian coordinates, digitization
+    def get_common_data(self):
+        lighting_marking_map = {
+            'No data': 'U',
+            'Yes': 'Y',
+            'No': 'N'
+        }
+
+        obstacle_common_data = {
+            'ctry_id': self.get_ctry_id(self.comboBoxCountryShortName.currentText()),
+            'obst_identifier': self.lineEditObstIdentifier.text(),
+            'obst_name': self.lineEditObstName.text(),
+            'agl': self.lineEditAgl.text(),
+            'amsl': self.lineEditAmsl.text(),
+            'vert_uom': self.comboBoxVertUOM.currentText(),
+            'vert_acc': self.lineEditVertAcc.text(),
+            'vert_acc_uom': self.comboBoxVertAccUOM.currentText(),
+            'hor_acc': self.lineEditHorAcc.text(),
+            'hor_acc_uom': self.comboBoxHorAccUOM.currentText(),
+            'obst_type_id': self.comboBoxCoordObstType.currentText(),
+            'lighting': lighting_marking_map.get(self.comboBoxLighting.currentText()),
+            'marking': lighting_marking_map.get(self.comboBoxMarking.currentText()),
+            'is_group': self.checkBoxIsGroup.isChecked()
+        }
+
+        # Only for testing: write fetch data to text file:
+        with open(r'C:\aviation_nav_db_test\obstacle_data_test.txt', 'a') as f:
+            f.write(50 * '=' + '\n')
+            for data in obstacle_common_data:
+                f.write('{} {}\n'.format(data, obstacle_common_data[data]))
+
+    def insert_single_obstacle(self):
+        self.get_common_data()
