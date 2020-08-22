@@ -59,7 +59,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QLineEdit" name="lineEditeTODFile">
@@ -210,7 +210,7 @@
       <string>Latitude</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEditSrcLon">
+    <widget class="QLineEdit" name="lineEditLonSrc">
      <property name="geometry">
       <rect>
        <x>190</x>
@@ -220,7 +220,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEditSrcLat">
+    <widget class="QLineEdit" name="lineEditLatSrc">
      <property name="geometry">
       <rect>
        <x>370</x>
@@ -230,7 +230,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEditObstIdent">
+    <widget class="QLineEdit" name="lineEditObstIdentifier">
      <property name="geometry">
       <rect>
        <x>320</x>
@@ -253,7 +253,7 @@
       <string>Ident</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEditCoordAgl">
+    <widget class="QLineEdit" name="lineEditAgl">
      <property name="geometry">
       <rect>
        <x>270</x>
@@ -263,7 +263,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBoxCoordVertUOM">
+    <widget class="QComboBox" name="comboBoxVertUOM">
      <property name="geometry">
       <rect>
        <x>400</x>
@@ -309,7 +309,7 @@
       <string>Amsl</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEditCoordAmsl">
+    <widget class="QLineEdit" name="lineEditAmsl">
      <property name="geometry">
       <rect>
        <x>270</x>
@@ -345,7 +345,7 @@
       <string>Vert Acc</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEditCoordHAcc">
+    <widget class="QLineEdit" name="lineEditHorAcc">
      <property name="geometry">
       <rect>
        <x>270</x>
@@ -355,7 +355,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEditCoordVAcc">
+    <widget class="QLineEdit" name="lineEditVertAcc">
      <property name="geometry">
       <rect>
        <x>270</x>
@@ -365,7 +365,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBoxCoordHAccUOM">
+    <widget class="QComboBox" name="comboBoxHorAccUOM">
      <property name="geometry">
       <rect>
        <x>400</x>
@@ -400,7 +400,7 @@
       </property>
      </item>
     </widget>
-    <widget class="QComboBox" name="comboBoxCoordVAccUOM">
+    <widget class="QComboBox" name="comboBoxVertAccUOM">
      <property name="geometry">
       <rect>
        <x>400</x>
@@ -417,6 +417,21 @@
      <item>
       <property name="text">
        <string>m</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>km</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>NM</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>SM</string>
       </property>
      </item>
     </widget>
@@ -438,12 +453,12 @@
       <rect>
        <x>580</x>
        <y>150</y>
-       <width>241</width>
+       <width>321</width>
        <height>22</height>
       </rect>
      </property>
     </widget>
-    <widget class="QCheckBox" name="checkBoxCoordIsGroup">
+    <widget class="QCheckBox" name="checkBoxIsGroup">
      <property name="geometry">
       <rect>
        <x>510</x>
@@ -505,12 +520,12 @@
       <string>Marking</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBoxCoordLighting">
+    <widget class="QComboBox" name="comboBoxLighting">
      <property name="geometry">
       <rect>
        <x>580</x>
        <y>230</y>
-       <width>73</width>
+       <width>101</width>
        <height>22</height>
       </rect>
      </property>
@@ -530,12 +545,12 @@
       </property>
      </item>
     </widget>
-    <widget class="QComboBox" name="comboBoxCoordMarking">
+    <widget class="QComboBox" name="comboBoxMarking">
      <property name="geometry">
       <rect>
        <x>580</x>
        <y>270</y>
-       <width>73</width>
+       <width>101</width>
        <height>22</height>
       </rect>
      </property>
@@ -576,6 +591,19 @@
        <width>401</width>
        <height>22</height>
       </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonInsertSingleObstacle">
+     <property name="geometry">
+      <rect>
+       <x>690</x>
+       <y>340</y>
+       <width>93</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Insert</string>
      </property>
     </widget>
    </widget>
