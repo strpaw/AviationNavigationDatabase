@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<etod_rules>
+    <country>
+        <short_name>Finland</short_name>
+        <file_format>CSV</file_format>
+        <coord_format>AF_DMSH_COMP</coord_format>
+        <vert_uom>ft</vert_uom>
+        <fields>
+            <obst_identifier>OBST ID</obst_identifier>
+            <obst_type>TYPE</obst_type>
+            <lon_src>CLON</lon_src>
+            <lat_scr>CLAT</lat_scr>
+            <amsl>ELEV MSL (FT)</amsl>
+            <agl>HGT AGL (FT)</agl>
+            <lighting>LGT TYPE</lighting>
+            <marking>MARKINGS</marking>
+        </fields>
+    </country>
+</etod_rules>
