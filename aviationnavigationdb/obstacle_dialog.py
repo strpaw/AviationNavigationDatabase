@@ -45,6 +45,8 @@ class ObstacleDialog(QDialog, FORM_CLASS):
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
         self.iface = iface
+        self.input_err_msg = ''  # Error message if input data is not correct, example missing required attribute
+        self.input_is_correct = True
 
         try:
             self.lyr_obstacle = QgsProject.instance().mapLayersByName('obstacle')[0]
@@ -193,11 +195,9 @@ class ObstacleDialog(QDialog, FORM_CLASS):
                                     provider.addFeature(feat)
                                     self.lyr_obstacle.commitChanges()
                         QMessageBox.information(QWidget(), "Message", 'Import completed')
-
-
-            else:
+            else:  # provided path is not valid file
                 QMessageBox.critical(QWidget(), "Message", '{} is not a file!'.format(etod_file))
-        else:
+        else:  # eTOD file not provided
             QMessageBox.critical(QWidget(), "Message", 'Select eTOD data file!')
 
     # Fetching obstacle data from dialog for inserting methods where single obstacle is inserted:
@@ -226,11 +226,64 @@ class ObstacleDialog(QDialog, FORM_CLASS):
             'is_group': self.checkBoxIsGroup.isChecked()
         }
 
-        # Only for testing: write fetch data to text file:
-        with open(r'C:\aviation_nav_db_test\obstacle_data_test.txt', 'a') as f:
-            f.write(50 * '=' + '\n')
-            for data in obstacle_common_data:
-                f.write('{} {}\n'.format(data, obstacle_common_data[data]))
+        return obstacle_common_data
+
+    @staticmethod
+    def positive_number(src_number):
+        try:
+            n = float(src_number)
+            if n <= 0:
+                return None
+        except ValueError:
+            return None
+        else:
+            return n
+
+    @staticmethod
+    def is_common_data_correct(common_data):
+        err_msg = ''
+        is_correct = True
+
+        # Identifier required
+        if not common_data['obst_identifier'].strip():
+            err_msg += 'Obstacle identifier required!\n'
+
+        # Agl required and positive float number
+        if common_data['agl'].strip() == '':
+            'Agl is required!\n'
+        if not ObstacleDialog.positive_number(common_data['agl'].strip()):
+            err_msg += 'Agl must be a positive number!\n'
+
+        # Amsl not required float number
+        if common_data['amsl'].strip():
+            try:
+                float(common_data['amsl'])
+            except ValueError:
+                err_msg += 'Amsl must be a number!\n'
+
+        # Hor Acc not required - positive number
+        if common_data['hor_acc'].strip():
+            if not ObstacleDialog.positive_number(common_data['hor_acc'].strip()):
+                err_msg += 'Hor Acc must be a positive number!\n'
+
+        # Vert Acc not required - positive number
+        if common_data['vert_acc'].strip():
+            if not ObstacleDialog.positive_number(common_data['vert_acc'].strip()):
+                err_msg += 'Vert Acc must be a positive number!\n'
+
+        if err_msg:
+            is_correct = False
+        return is_correct, err_msg
 
     def insert_single_obstacle(self):
-        self.get_common_data()
+        common_data = self.get_common_data()
+        common_data_correct, common_data_error = self.is_common_data_correct(common_data)
+        if common_data_correct:
+            # TODO: Insert data
+            # Only for testing: write fetch data to text file:
+            with open(r'C:\aviation_nav_db_test\obstacle_data_test.txt', 'a') as f:
+                f.write(50 * '=' + '\n')
+                for data in common_data:
+                    f.write('{} {}\n'.format(data, common_data[data]))
+        else:
+            QMessageBox.critical(QWidget(), "Message", common_data_error)

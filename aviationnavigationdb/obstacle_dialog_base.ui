@@ -439,21 +439,6 @@
        <string>m</string>
       </property>
      </item>
-     <item>
-      <property name="text">
-       <string>km</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>NM</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>SM</string>
-      </property>
-     </item>
     </widget>
     <widget class="QLabel" name="label_9">
      <property name="geometry">
