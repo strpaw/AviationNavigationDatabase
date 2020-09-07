@@ -493,10 +493,13 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>100</y>
+       <y>170</y>
        <width>161</width>
        <height>192</height>
       </rect>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::MultiSelection</enum>
      </property>
     </widget>
     <widget class="QLabel" name="label_11">
@@ -609,6 +612,42 @@
      </property>
      <property name="text">
       <string>Insert</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonAddAirport">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>81</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRemoveAirports">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>110</y>
+       <width>81</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Remove</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEditAirportICAO">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>81</width>
+       <height>22</height>
+      </rect>
      </property>
     </widget>
    </widget>

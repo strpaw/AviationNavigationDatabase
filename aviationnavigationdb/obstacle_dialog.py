@@ -25,6 +25,7 @@
 import os
 
 from PyQt5 import uic
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QMessageBox, QDialog, QFileDialog
 from qgis.core import *
 from qgis.gui import *
@@ -58,6 +59,9 @@ class ObstacleDialog(QDialog, FORM_CLASS):
         self.pushButtonSelecteTODFile.clicked.connect(self.select_etod_file)
         self.pushButtonImporteTOD.clicked.connect(self.import_etod)
         self.pushButtonInsertSingleObstacle.clicked.connect(self.insert_single_obstacle)
+        self.pushButtonAddAirport.clicked.connect(self.add_airport)
+        self.pushButtonRemoveAirports.clicked.connect(self.remove_airports)
+        self.lineEditAirportICAO.textChanged.connect(self.airport_icao_upper_case)
 
     def change_obstacle_insert_method(self):
         self.stackedWidgetObstInsertMethod.setCurrentIndex(self.comboBoxObstInsertMethod.currentIndex())
@@ -199,6 +203,27 @@ class ObstacleDialog(QDialog, FORM_CLASS):
                 QMessageBox.critical(QWidget(), "Message", '{} is not a file!'.format(etod_file))
         else:  # eTOD file not provided
             QMessageBox.critical(QWidget(), "Message", 'Select eTOD data file!')
+
+    def airport_icao_upper_case(self):
+        self.lineEditAirportICAO.setText(self.lineEditAirportICAO.text().upper())
+
+    def add_airport(self):
+        """ Add airport which is associated with obstacle. """
+        airport_icao = self.lineEditAirportICAO.text()
+        if airport_icao.strip() == '' or len(airport_icao) != 4:
+            QMessageBox.critical(QWidget(), "Message", 'Insert airport ICAO code!')
+        else:
+            # TODO: Check if airport exists in DB
+            find_airport = self.listWidgetObstAirports.findItems(airport_icao, Qt.MatchExactly)
+            if find_airport:
+                QMessageBox.critical(QWidget(), "Message", 'Airport is already on the list!')
+            else:
+                self.listWidgetObstAirports.addItem(airport_icao)
+                self.listWidgetObstAirports.sortItems()
+
+    def remove_airports(self):
+        """ Remove airport or airpots from list that are associated with obstacle. """
+        pass
 
     # Fetching obstacle data from dialog for inserting methods where single obstacle is inserted:
     # Longitude, latitude; azimuth and distance, azimuth distance offset, cartesian coordinates, digitization
